@@ -7,9 +7,11 @@ import { FbResponse } from './interfaces';
 @Injectable({
   providedIn: 'root'
 })
+  
 export class ProductService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
+  
   create(product) {
     return this.http.post(`${environment.fbObUrl}/products.json`, product)
       .pipe(map((res:FbResponse) => {
@@ -21,4 +23,15 @@ export class ProductService {
     }))
   }
 
+  getALL() {
+    return this.http.get(`${environment.fbObUrl}/products.json`)
+      .pipe(map(res => {
+        return Object.keys(res)
+          .map(key => ({
+            ...res[key],
+            id: key,
+            date: new Date(res[key].date)
+        }))
+    }))
+  }
 }

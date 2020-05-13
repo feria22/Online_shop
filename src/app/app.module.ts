@@ -8,6 +8,9 @@ import { ProductPageComponent } from './product-page/product-page.component';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInt } from './shared/auth.interseptor';
+import { ProductComponent } from './product/product.component';
+import { QuillModule } from 'ngx-quill';
+
 
 
 
@@ -17,12 +20,15 @@ import { AuthInt } from './shared/auth.interseptor';
     MainLayoutComponent,
     MainPageComponent,
     ProductPageComponent,
-    CartPageComponent
+    CartPageComponent,
+    ProductComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    QuillModule.forRoot(),
 
 
   ],
