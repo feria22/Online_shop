@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductService } from 'src/app/shared/product.service';
+// import { timingSafeEqual } from 'crypto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-page',
@@ -8,9 +10,11 @@ import { ProductService } from 'src/app/shared/product.service';
   styleUrls: ['./add-page.component.scss']
 })
 export class AddPageComponent implements OnInit {
-  form:FormGroup
+  form: FormGroup
+  submitted = false;
   constructor(
-    private prodServ:ProductService
+    private prodServ: ProductService,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -26,6 +30,7 @@ export class AddPageComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
+    this.submitted = true;
     const product = {
       type: this.form.value.type,
       title: this.form.value.title,
@@ -35,7 +40,12 @@ export class AddPageComponent implements OnInit {
       date: new Date()
     }
    
-    this.prodServ.create(product).subscribe(res=>console.log(res))
+    this.prodServ.create(product).subscribe(res => {
+      this.form.reset();
+      this.submitted = false;
+      this.router.navigate(['/'])
+    }
+    )
     
   }
 
