@@ -46,7 +46,7 @@ export class AddPageComponent implements OnInit {
     this.prodServ.create(product).subscribe(res => {
       this.form.reset();
       this.submitted = false;
-      this.router.navigate(['/'])
+      this.router.navigate(['/admin','dashboard'])
     }
     )
     
