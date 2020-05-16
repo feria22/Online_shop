@@ -48,6 +48,6 @@ export class ProductService {
     return this.http.delete(`${environment.fbObUrl}/products/${id}.json`)
   }
   update(product:Product) {
-    return this.http.patch(`${environment.fbObUrl}/products/${product.id}.json`,product)
+    return this.http.patch(`${environment.fbObUrl}/products/${product.id}.json`, product)
   }
 }
