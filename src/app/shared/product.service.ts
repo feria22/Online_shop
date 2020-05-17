@@ -10,7 +10,8 @@ import { FbResponse, Product } from './interfaces';
   
 export class ProductService {
   type = 'Phone'
-  
+  cartProducts: Product[]=[]
+
   constructor(private http: HttpClient) { }
   
   create(product) {
@@ -53,5 +54,8 @@ export class ProductService {
   }
   setType(type) {
     this.type=type
+  }
+  AddProduct(product) {
+    this.cartProducts.push(product)
   }
 }
