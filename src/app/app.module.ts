@@ -14,6 +14,7 @@ import { QuillModule } from 'ngx-quill';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +23,7 @@ import { QuillModule } from 'ngx-quill';
     ProductPageComponent,
     CartPageComponent,
     ProductComponent,
+
 
   ],
   imports: [
