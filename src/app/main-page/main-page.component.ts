@@ -8,15 +8,14 @@ import { ProductService } from '../shared/product.service';
 })
 export class MainPageComponent implements OnInit {
   products$
+
   constructor(
-    private ProdServ: ProductService
+    public ProdServ: ProductService
   ) { }
  
 
   ngOnInit() {
-    this.products$ = this.ProdServ.getALL();
-    // console.log(this.  products$+'main-page');
-    
+    this.products$ = this.ProdServ.getALL(); 
   }
 
 }

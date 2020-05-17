@@ -10,6 +10,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInt } from './shared/auth.interseptor';
 import { ProductComponent } from './product/product.component';
 import { QuillModule } from 'ngx-quill';
+import { SortingPipe } from './shared/sorting.pipe';
 
 
 
@@ -23,8 +24,7 @@ import { QuillModule } from 'ngx-quill';
     ProductPageComponent,
     CartPageComponent,
     ProductComponent,
-
-
+    SortingPipe
   ],
   imports: [
     BrowserModule,
@@ -41,6 +41,8 @@ import { QuillModule } from 'ngx-quill';
   }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+ }
 
 
