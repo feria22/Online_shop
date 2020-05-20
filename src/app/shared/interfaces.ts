@@ -7,6 +7,6 @@ export interface Product{
     title?:string
     photo?:string
     info?: string
-    price?:string
+    price?:number
     date?:Date
 }

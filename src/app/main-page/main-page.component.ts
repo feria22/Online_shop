@@ -16,6 +16,10 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit() {
     this.products$ = this.ProdServ.getALL(); 
+    // console.log(localStorage.getItem('fb-token'))
+    // for (let product of this.products$) {
+    //   console.log (product)
+    // }
   }
-
 }
+

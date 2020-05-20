@@ -43,5 +43,4 @@ import { SearchPipe } from '../shared/search.pipe';
 })
 
 export class AdminModule{
-    
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl,Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/auth.service';
 import { Router } from '@angular/router';
 
@@ -10,21 +10,21 @@ import { Router } from '@angular/router';
 })
 export class LoginPageComponent implements OnInit {
 
-  form: FormGroup
-  submitted = false
-  
+  form: FormGroup;
+  submitted = false;
+
   constructor(
     public auth: AuthService,
     private router: Router
-    
-  ) { } 
-  
+
+  ) { }
+
   ngOnInit() {
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null,[Validators.required,Validators.minLength(6)]),
-      
-    })
+      password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+
+    });
   }
 
   submit() {
@@ -35,20 +35,17 @@ export class LoginPageComponent implements OnInit {
     const user = {
       email: this.form.value.email,
       password: this.form.value.password,
-      returnSecureToken:true
-    }
+      returnSecureToken: true
+    };
     this.auth.login(user).subscribe(res => {
-      console.log(res)
-      // console.log(user.email,user.password)
+      this.form.reset;
+      this.router.navigate(['/admin', 'dashboard']);
+      this.submitted = false;
 
-      this.form.reset
-      this.router.navigate(['/admin','dashboard'])
-      this.submitted = false
-   
     }, () => {
-      this.submitted=false
-    })
+      this.submitted = false;
+    });
   }
-  
+
 
 }

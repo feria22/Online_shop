@@ -42,14 +42,14 @@ export class AddPageComponent implements OnInit {
       price: this.form.value.price,
       date: new Date()
     }
-   
+
     this.prodServ.create(product).subscribe(res => {
       this.form.reset();
       this.submitted = false;
       this.router.navigate(['/admin','dashboard'])
     }
     )
-    
+
   }
 
 }
