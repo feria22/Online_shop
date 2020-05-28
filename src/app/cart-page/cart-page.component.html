@@ -65,8 +65,10 @@
     <button type="submit" class='btn btn-primary btn-block' [disabled]="form.invalid || submitted">Add</button>
   </form>
 </div>
-<ng-template  *ngIf="!added" #empty>
+
+  <ng-template   #empty>
     <h2 class="text-center">Cart is empty, select product</h2>
-</ng-template>
+  </ng-template>
+
 <div *ngIf="added" class="text-center text-danger">{{added}}</div>
 

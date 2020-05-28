@@ -37,6 +37,7 @@ export class CartPageComponent implements OnInit, OnDestroy {
         adress: new FormControl(null, Validators.required),
         payment: new FormControl('Cash')
       });
+      // console.log(this.added)
     }
   submit() {
     if (this.form.invalid) {
