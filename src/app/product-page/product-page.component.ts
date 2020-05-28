@@ -18,15 +18,15 @@ export class ProductPageComponent implements OnInit {
   ngOnInit() {
     this.product$ = this.route.params
       .pipe(switchMap(params => {
-       
+
         return this.prodServ.getById(params['id'])
       }
-    
+
       )
     )
     // console.log( this.product$)
   }
-  AddProduct(id) {
-  this.prodServ.AddProduct(id)
+  AddProduct(product) {
+  this.prodServ.AddProduct(product)
 }
 }

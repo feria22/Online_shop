@@ -11,6 +11,7 @@ import { AuthInt } from './shared/auth.interseptor';
 import { ProductComponent } from './product/product.component';
 import { QuillModule } from 'ngx-quill';
 import { SortingPipe } from './shared/sorting.pipe';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -31,6 +32,7 @@ import { SortingPipe } from './shared/sorting.pipe';
     AppRoutingModule,
     HttpClientModule,
     QuillModule.forRoot(),
+    ReactiveFormsModule,
 
 
   ],

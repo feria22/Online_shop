@@ -9,16 +9,16 @@ import { ProductService } from '../shared/product.service';
 })
 export class ProductComponent implements OnInit {
   @Input() product
-  
+
   constructor(
   private ProdServ:ProductService
   ) { }
 
   ngOnInit(): void {
   }
-    AddProduct(id){
-      this.ProdServ.AddProduct(id)
+    AddProduct(product){
+      this.ProdServ.AddProduct(product)
     }
-  
+
 
 }
