@@ -8,7 +8,7 @@ import {BehaviorSubject} from 'rxjs';
   providedIn: 'root'
 })
 export class LocalStorageService {
-  private productsInCart: Array<any> = JSON.parse(localStorage.getItem('productsInCart')) || {};
+  private productsInCart: {} = JSON.parse(localStorage.getItem('productsInCart')) || {};
   public order$ = new BehaviorSubject(this.productsInCart);
   constructor(
   ) {

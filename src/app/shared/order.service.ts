@@ -10,8 +10,6 @@ import {FbResponse, Product} from './interfaces';
 })
 export class OrderService {
 
-
-
   constructor(
     private http: HttpClient,
     private LSS: LocalStorageService,
@@ -29,22 +27,20 @@ export class OrderService {
       }));
   }
 
-  // getALL() {
-  //   return this.http.get(`${environment.fbObUrl}/products.json`)
-  //     .pipe(map(res => {
-  //       return Object.keys(res)
-  //         .map(key => ({
-  //           ...res[key],
-  //           id: key,
-  //           date: new Date(res[key].date)
-  //         }));
-  //     }));
-  // }
-  //
-  //
-  //
-  // remove(id) {
-  //   return this.http.delete(`${environment.fbObUrl}/products/${id}.json`);
-  // }
+  getALL() {
+    return this.http.get(`${environment.fbObUrl}/orders.json`)
+      .pipe(map(res => {
+        return Object.keys(res)
+          .map(key => ({
+            ...res[key],
+            id: key,
+            date: new Date(res[key].date)
+          }));
+      }));
+  }
+
+  remove(id) {
+    return this.http.delete(`${environment.fbObUrl}/orders/${id}.json`);
+  }
 
 }

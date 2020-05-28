@@ -19,7 +19,7 @@ export class CartPageComponent implements OnInit, OnDestroy {
   form: FormGroup;
   submitted = false;
   order$ = this.LSS.order$;
-
+  added = '';
   constructor(
     private prodServ: ProductService,
     private LSS: LocalStorageService,
@@ -59,6 +59,7 @@ export class CartPageComponent implements OnInit, OnDestroy {
         this.form.reset();
         this.submitted = false;
         this.cartProducts = [];
+        this.added = "Order created"
         this.LSS.deleteAll();
       }
     );
