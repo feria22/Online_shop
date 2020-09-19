@@ -11,5 +11,22 @@
   width: 2rem;
   height: 2rem;
   background: rgba(0,0,0,0);
-  //text-decoration: none;
+}
+@media (max-width: 780px) {
+  table th, table td {
+    padding: 5px;
+  }
+  .math {
+    border: none;
+    width: 1rem;
+    height: 1rem;
+  }
+  .small-width-display-none{
+    display: none;
+  }
+}
+@media (max-width: 500px) {
+  .extra-small-width-display-none{
+    display: none;
+  }
 }

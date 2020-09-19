@@ -6,3 +6,8 @@
     width: 33.3%;
     margin-top: 2rem;
 }
+@media (max-width: 500px) {
+  .box{
+    width: 50%;
+  }
+}

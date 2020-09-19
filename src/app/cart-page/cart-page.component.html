@@ -4,7 +4,7 @@
     <table>
       <thead>
       <tr>
-        <th>Product type</th>
+        <th class="small-width-display-none">Product type</th>
         <th>Product title</th>
         <th>Product quatity</th>
         <th>Product price</th>
@@ -14,14 +14,14 @@
       </thead>
         <tbody>
             <tr *ngFor="let product of cartProducts;let i=index">
-                <td> {{ product.type}} </td>
+                <td class="small-width-display-none"> {{ product.type}} </td>
                 <td> {{ product.title}} </td>
                 <td><button type="button" class="math" (click)="decrementItem(product.id)">-</button>
                   {{ product.qty}}
                   <button type="button" class="math" (click)="incrementItem(product.id)">+</button>
                 </td>
               <td> {{ product.price}} $</td>
-              <td> {{ product.qty* product.price}} $</td>
+              <td class="extra-small-width-display-none"> {{ product.qty* product.price}} $</td>
 
               <td>
                     <button class="btn btn-danger" type="button" (click)="delete(product)">Delete</button>
@@ -62,12 +62,12 @@
         <option value="cash">Cash</option>
       </select>
     </div>
-    <button type="submit" class='btn btn-primary btn-block' [disabled]="form.invalid || submitted">Add</button>
+    <button type="submit" class='btn btn-primary btn-block' [disabled]="form.invalid || submitted">Buy</button>
   </form>
 </div>
 
-  <ng-template   #empty>
-    <h2 class="text-center">Cart is empty, select product</h2>
+  <ng-template   #empty >
+    <h2 class="text-center" *ngIf="added.length==0">Cart is empty, select product</h2>
   </ng-template>
 
 <div *ngIf="added" class="text-center text-danger">{{added}}</div>

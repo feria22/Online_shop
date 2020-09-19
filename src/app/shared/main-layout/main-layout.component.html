@@ -12,7 +12,7 @@
             <a (click)="setType('Laptop')">Laptop</a>
         </li>
         <li routerLinkActive="active">
-            <a [routerLink]="['/cart']">Cart</a>
+            <a [routerLink]="['/cart']">Cart <span class="right-top" *ngIf="totalPrice>0">{{totalPrice}} $</span></a>
         </li>
     </ul>
 </nav>

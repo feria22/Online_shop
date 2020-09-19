@@ -1,10 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../shared/product.service';
 import {Product} from '../shared/interfaces';
 import {LocalStorageService} from '../shared/local-storage.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {OrderService} from '../shared/order.service';
-import {Observable} from 'rxjs';
 import { take } from 'rxjs/internal/operators/take';
 
 
@@ -13,7 +12,7 @@ import { take } from 'rxjs/internal/operators/take';
   templateUrl: './cart-page.component.html',
   styleUrls: ['./cart-page.component.scss']
 })
-export class CartPageComponent implements OnInit, OnDestroy {
+export class CartPageComponent implements OnInit {
   cartProducts: Product[] = [] ;
   totalPrice = 0;
   form: FormGroup;
@@ -31,13 +30,12 @@ export class CartPageComponent implements OnInit, OnDestroy {
         this.cartProducts = Object.values(value);
         this.totalPrice = this.cartProducts.reduce(((a, item) => a + item.price * item.qty), 0);
       });
-      this.form = new FormGroup({
+     this.form = new FormGroup({
         name: new FormControl(null, Validators.required),
         phone: new FormControl(null, Validators.required),
         adress: new FormControl(null, Validators.required),
         payment: new FormControl('Cash')
       });
-      // console.log(this.added)
     }
   submit() {
     if (this.form.invalid) {
@@ -56,11 +54,11 @@ export class CartPageComponent implements OnInit, OnDestroy {
 
     this.orderService.create(order)
       .pipe(take(1))
-      .subscribe(res => {
+      .subscribe(() => {
         this.form.reset();
         this.submitted = false;
         this.cartProducts = [];
-        this.added = "Order created"
+        this.added = 'Thank you, your order has been placed';
         this.LSS.deleteAll();
       }
     );
@@ -69,7 +67,7 @@ export class CartPageComponent implements OnInit, OnDestroy {
   delete(product) {
     this.totalPrice -= +product.price;
     this.LSS.unsetLSS(product.id);
-    // console.log(product);
+
   }
 
   incrementItem(id: string) {
@@ -79,7 +77,5 @@ export class CartPageComponent implements OnInit, OnDestroy {
   decrementItem(id: string) {
     this.LSS.decrementItem(id);
   }
-  ngOnDestroy(){
-    // this.order$.unsubscribe();
-  }
+
 }

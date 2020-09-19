@@ -7,19 +7,15 @@ import { ProductService } from '../shared/product.service';
   styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent implements OnInit {
-  products$
+  products$;
 
   constructor(
     public ProdServ: ProductService
   ) { }
- 
+
 
   ngOnInit() {
-    this.products$ = this.ProdServ.getALL(); 
-    // console.log(localStorage.getItem('fb-token'))
-    // for (let product of this.products$) {
-    //   console.log (product)
-    // }
+    this.products$ = this.ProdServ.getALL();
   }
 }
 
